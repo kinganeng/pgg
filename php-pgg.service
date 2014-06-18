@@ -1,0 +1,12 @@
+[Unit]
+Description=The PHP Game Process Manager
+After=syslog.target network.target
+
+[Service]
+PIDFile=${prefix}/var/run/php-pgg.pid
+ExecStart=${exec_prefix}/sbin/php-gpm --pgg-config /private/etc/php-pgg.conf
+ExecReload=/bin/kill -USR2 $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+

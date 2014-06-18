@@ -1,0 +1,12 @@
+[Unit]
+Description=The PHP Game Gateway Manager
+After=syslog.target network.target
+
+[Service]
+PIDFile=@localstatedir@/run/php-pgg.pid
+ExecStart=@sbindir@/php-gpm --pgg-config @sysconfdir@/php-pgg.conf
+ExecReload=/bin/kill -USR2 $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+
